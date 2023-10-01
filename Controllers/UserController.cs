@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eventz.Accounts;
 using eventz.DTOs;
 using eventz.Mappings;
 using eventz.Models;
@@ -13,14 +14,16 @@ namespace eventz.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepositorie _repositorie;
+        private readonly IAuthenticate _authenticate;
         private readonly IMapper _mapper;
 
-        
 
-        public UserController(IUserRepositorie repositorie, IMapper mapper)
+
+        public UserController(IUserRepositorie repositorie, IMapper mapper, IAuthenticate authenticate)
         {
             _repositorie = repositorie;
             _mapper = mapper;
+            _authenticate = authenticate;
         }
 
         [HttpPost]
@@ -44,12 +47,12 @@ namespace eventz.Controllers
         [Route("Login")]
         public async Task<ActionResult<dynamic>> Authenticate([FromBody] User user)
         {
-            var userLoggin = await _repositorie.AuthenticateAsync(user.Username, user.Password);
+            var userLoggin = await _authenticate.AuthenticateAsync(user.Username, user.Password);
             if (userLoggin == false )
             {
                 return NotFound("Usuario ou senha inválidos!");
             }
-            var token = _repositorie.GenerateToken(user.Id, user.Email);
+            var token = _authenticate.GenerateToken(user.Id, user.Email);
 
             return token;
         }
