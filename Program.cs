@@ -5,6 +5,8 @@ using eventz.Data;
 using eventz.Mappings;
 using eventz.Repositories;
 using eventz.Repositories.Interfaces;
+using eventz.SecurityServices;
+using eventz.SecurityServices.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -22,6 +24,7 @@ builder.Services.AddDbContext<UserDbContext>(options => options.UseMySql(
 
 builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
 builder.Services.AddScoped<IAuthenticate, Authenticate>();
+builder.Services.AddScoped<ISecurityService, SecurityService>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

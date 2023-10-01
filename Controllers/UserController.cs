@@ -4,6 +4,7 @@ using eventz.DTOs;
 using eventz.Mappings;
 using eventz.Models;
 using eventz.Repositories.Interfaces;
+using eventz.SecurityServices.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,15 +16,17 @@ namespace eventz.Controllers
     {
         private readonly IUserRepositorie _repositorie;
         private readonly IAuthenticate _authenticate;
+        private readonly ISecurityService _securityService;
         private readonly IMapper _mapper;
 
 
 
-        public UserController(IUserRepositorie repositorie, IMapper mapper, IAuthenticate authenticate)
+        public UserController(IUserRepositorie repositorie, IMapper mapper, IAuthenticate authenticate, ISecurityService securityService)
         {
             _repositorie = repositorie;
             _mapper = mapper;
             _authenticate = authenticate;
+            _securityService = securityService;
         }
 
         [HttpPost]
@@ -33,7 +36,11 @@ namespace eventz.Controllers
             if(await _repositorie.DataIsUnique(userModel))
             {
                 userModel.Id = Guid.NewGuid();
+                string encrypted = await _securityService.EncryptPassword(userModel.Password);
+                userModel.Password = encrypted;
+
                 User user = await _repositorie.Create(userModel);
+                
                 var userDto = _mapper.Map<UserDto>(user);
                 return Ok(userDto);
 

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "32atjIhZpRnvkjxaGVwLcXQTS44AyGFWL9brfuEi9sUQlONx/3V9G5PpOcJoEZcJZllS/SsNBihYTkM58TvsgA==",
+  "dgSpecHash": "Pl5HBPtCRYbwchUoRVEWmUasVGD9Z2/70ivcJ4zCfYQQX9BCdc1dR/4OHzK33wxEmQbzha5EkRz/Ma7Sc00hpQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\robso\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\robso\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\robso\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\robso\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\robso\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.1.2\\microsoft.aspnetcore.authentication.2.1.2.nupkg.sha512",
     "C:\\Users\\robso\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.1.1\\microsoft.aspnetcore.authentication.abstractions.2.1.1.nupkg.sha512",

@@ -1,4 +1,5 @@
 ﻿using eventz.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -20,10 +21,9 @@ namespace eventz.Accounts.Repositorie
         public async Task<bool> AuthenticateAsync(string username, string password)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
-
             if (user == null) return false;
 
-            if (user.Password != password) return false;
+            if (BCrypt.Net.BCrypt.Verify(user.Password, password)) return false;
 
             return true;
         }
