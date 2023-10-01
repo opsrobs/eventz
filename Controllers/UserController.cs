@@ -31,24 +31,27 @@ namespace eventz.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<ActionResult<User>> Create([FromBody] User userModel)
+        public async Task<ActionResult<UserDto>> Create([FromBody] User userModel)
         {
-            if(await _repositorie.DataIsUnique(userModel))
+            if (await _repositorie.DataIsUnique(userModel))
             {
                 userModel.Id = Guid.NewGuid();
                 string encrypted = await _securityService.EncryptPassword(userModel.Password);
                 userModel.Password = encrypted;
 
                 User user = await _repositorie.Create(userModel);
-                
-                var userDto = _mapper.Map<UserDto>(user);
-                return Ok(userDto);
 
+                var userDto = _mapper.Map<UserDto>(user);
+                var token = _authenticate.GenerateToken(user.Id, user.Email);
+
+                return Ok(new { User = userDto, Token = token });
             }
             else
-                return BadRequest("CPF/CNPJ já está cadastro");
-
+            {
+                return BadRequest("CPF/CNPJ já está cadastrado");
+            }
         }
+
 
         [HttpPost]
         [Route("Login")]
