@@ -3,8 +3,10 @@ using eventz.Data;
 using eventz.Mappings;
 using eventz.Repositories;
 using eventz.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,30 @@ builder.Services.AddDbContext<UserDbContext>(options => options.UseMySql(
 ));
 
 builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(opt =>
+{
+    opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.
+    TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidIssuer = builder.Configuration["jwt:issuer"],
+        ValidAudience = builder.Configuration["jwt:audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["jwt:SecretKey"])),
+        ClockSkew = TimeSpan.Zero
+
+    };
+});
+
 builder.Services.AddAutoMapper(typeof(UserMapToDto));
 
 // Add services to the container.

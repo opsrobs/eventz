@@ -11,6 +11,10 @@ namespace eventz.Repositories.Interfaces
         Task<bool> Delete(Guid id);
         Task<bool> DataIsUnique(User user);
 
+        Task<bool> AuthenticateAsync(string username, string password);
+        Task<bool> UserExists(string username);
+        public string GenerateToken(Guid id, string email);
+
 
     }
 }

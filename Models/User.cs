@@ -1,5 +1,8 @@
 ﻿using eventz.Enums;
+using Microsoft.AspNetCore.Identity;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace eventz.Models
 {

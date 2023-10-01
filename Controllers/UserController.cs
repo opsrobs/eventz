@@ -15,6 +15,8 @@ namespace eventz.Controllers
         private readonly IUserRepositorie _repositorie;
         private readonly IMapper _mapper;
 
+        
+
         public UserController(IUserRepositorie repositorie, IMapper mapper)
         {
             _repositorie = repositorie;
@@ -22,6 +24,7 @@ namespace eventz.Controllers
         }
 
         [HttpPost]
+        [Route("Register")]
         public async Task<ActionResult<User>> Create([FromBody] User userModel)
         {
             if(await _repositorie.DataIsUnique(userModel))
@@ -35,6 +38,20 @@ namespace eventz.Controllers
             else
                 return BadRequest("CPF/CNPJ já está cadastro");
 
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<ActionResult<dynamic>> Authenticate([FromBody] User user)
+        {
+            var userLoggin = await _repositorie.AuthenticateAsync(user.Username, user.Password);
+            if (userLoggin == false )
+            {
+                return NotFound("Usuario ou senha inválidos!");
+            }
+            var token = _repositorie.GenerateToken(user.Id, user.Email);
+
+            return token;
         }
 
         [HttpPut("{id}")]
