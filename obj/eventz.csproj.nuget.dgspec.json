@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\robso\\OneDrive\\Documentos\\eventz\\eventz.csproj": {}
+    "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj": {}
   },
   "projects": {
-    "C:\\Users\\robso\\OneDrive\\Documentos\\eventz\\eventz.csproj": {
+    "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\robso\\OneDrive\\Documentos\\eventz\\eventz.csproj",
+        "projectUniqueName": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj",
         "projectName": "eventz",
-        "projectPath": "C:\\Users\\robso\\OneDrive\\Documentos\\eventz\\eventz.csproj",
+        "projectPath": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj",
         "packagesPath": "C:\\Users\\robso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\robso\\OneDrive\\Documentos\\eventz\\obj\\",
+        "outputPath": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\robso\\AppData\\Roaming\\NuGet\\NuGet.Config",

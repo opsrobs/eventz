@@ -17,7 +17,14 @@ namespace eventz.Repositories
         {
             return await _dbContext.Users.ToListAsync();
         }
-
+        public async Task<bool> DataIsUnique(User user)
+        {
+            if (!await _dbContext.Users.AnyAsync(x => x.CPF == user.CPF) || !await _dbContext.Users.AnyAsync(x => x.CNPJ == user.CNPJ))
+            {
+                return true;
+            }
+            return false;
+        }
         public async Task<User> GetUserById(Guid id)
         {
             return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);

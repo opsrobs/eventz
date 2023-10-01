@@ -20,8 +20,12 @@ namespace eventz.Controllers
         public async Task<ActionResult<User>> Create([FromBody] User userModel)
         {
             User user = await _repositorie.Create(userModel);
+            if(await _repositorie.DataIsUnique(user))
+            {
+                return Ok(user);
 
-            return Ok(user);
+            }
+            return BadRequest("CPF/CNPJ já está cadastro");
 
         }
 
@@ -30,8 +34,14 @@ namespace eventz.Controllers
         {
             userModel.Id = id;  
             User user = await _repositorie.Update(userModel, id);
+            if (await _repositorie.DataIsUnique(user))
+            {
+                return Ok(user);
 
-            return Ok(user);
+            }
+            return BadRequest("CPF/CNPJ já está cadastro");
+
+
 
         }
 

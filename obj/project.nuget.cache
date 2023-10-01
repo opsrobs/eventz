@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2O7B4IcvCHHvocqP+RtDkpDRhPQJHWhgZaOfNueVlkKc0edmt3cb2EetWYa3ni50oPRkAn/suL8gIgyJkjZwFw==",
+  "dgSpecHash": "+gSQGLvBeY4ngswiBnbRR0fIO3KjRV5SV/fm63Q+SVxvZq1ZJiyL/fVlvGL3iKOI9z/5WrEN+l1B1zJ+2HxhCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\robso\\OneDrive\\Documentos\\eventz\\eventz.csproj",
+  "projectFilePath": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\robso\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\robso\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

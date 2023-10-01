@@ -9,6 +9,8 @@ namespace eventz.Repositories.Interfaces
         Task<User> Create(User user);
         Task<User> Update(User user, Guid id);
         Task<bool> Delete(Guid id);
+        Task<bool> DataIsUnique(User user);
+
 
     }
 }
