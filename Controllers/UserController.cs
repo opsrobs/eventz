@@ -1,4 +1,7 @@
-﻿using eventz.Models;
+﻿using AutoMapper;
+using eventz.DTOs;
+using eventz.Mappings;
+using eventz.Models;
 using eventz.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,22 +13,27 @@ namespace eventz.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepositorie _repositorie;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserRepositorie repositorie)
+        public UserController(IUserRepositorie repositorie, IMapper mapper)
         {
             _repositorie = repositorie;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<ActionResult<User>> Create([FromBody] User userModel)
         {
-            User user = await _repositorie.Create(userModel);
-            if(await _repositorie.DataIsUnique(user))
+            if(await _repositorie.DataIsUnique(userModel))
             {
-                return Ok(user);
+                userModel.Id = Guid.NewGuid();
+                User user = await _repositorie.Create(userModel);
+                var userDto = _mapper.Map<UserDto>(user);
+                return Ok(userDto);
 
             }
-            return BadRequest("CPF/CNPJ já está cadastro");
+            else
+                return BadRequest("CPF/CNPJ já está cadastro");
 
         }
 
@@ -33,15 +41,15 @@ namespace eventz.Controllers
         public async Task<ActionResult<User>> Update([FromBody] User userModel, Guid id)
         {
             userModel.Id = id;  
-            User user = await _repositorie.Update(userModel, id);
-            if (await _repositorie.DataIsUnique(user))
+            if (await _repositorie.DataIsUnique(userModel))
             {
-                return Ok(user);
+                User user = await _repositorie.Update(userModel, id);
+                var userDto = _mapper.Map<UserDto>(user);
+                return Ok(userDto);
 
             }
-            return BadRequest("CPF/CNPJ já está cadastro");
-
-
+            else
+                return BadRequest("CPF/CNPJ já está cadastro");
 
         }
 
@@ -56,7 +64,8 @@ namespace eventz.Controllers
         public async Task<ActionResult<List<User>>> GetUserById(Guid id)
         {
             User user = await _repositorie.GetUserById(id);
-            return Ok(user);
+            var userDto = _mapper.Map<UserDto>(user);
+            return Ok(userDto);
         }
 
         [HttpDelete("{id}")]

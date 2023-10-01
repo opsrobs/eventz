@@ -76,3 +76,5 @@ C:\Users\robso\OneDrive\Área de Trabalho\eventz\obj\Debug\net6.0\refint\eventz.
 C:\Users\robso\OneDrive\Área de Trabalho\eventz\obj\Debug\net6.0\eventz.pdb
 C:\Users\robso\OneDrive\Área de Trabalho\eventz\obj\Debug\net6.0\eventz.genruntimeconfig.cache
 C:\Users\robso\OneDrive\Área de Trabalho\eventz\obj\Debug\net6.0\ref\eventz.dll
+C:\Users\robso\OneDrive\Área de Trabalho\eventz\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\robso\OneDrive\Área de Trabalho\eventz\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

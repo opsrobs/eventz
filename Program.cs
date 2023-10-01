@@ -1,5 +1,6 @@
 using eventz.Controllers;
 using eventz.Data;
+using eventz.Mappings;
 using eventz.Repositories;
 using eventz.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<UserDbContext>(options => options.UseMySql(
 ));
 
 builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
+builder.Services.AddAutoMapper(typeof(UserMapToDto));
 
 // Add services to the container.
 

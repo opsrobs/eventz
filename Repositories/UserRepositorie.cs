@@ -63,8 +63,8 @@ namespace eventz.Repositories
                 throw new InvalidOperationException("User not found");
             }
 
-            userId.Nome = user.Nome;
-            userId.Sobrenome = user.Sobrenome;
+            userId.FirstName = user.FirstName;
+            userId.LastName = user.LastName;
             userId.Email = user.Email;
             userId.Username = user.Username;
             userId.UpdatedAt = DateTime.Now;

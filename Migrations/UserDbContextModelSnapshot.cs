@@ -37,7 +37,7 @@ namespace eventz.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime?>("DataDeNascimento")
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasMaxLength(20)
                         .HasColumnType("datetime(6)");
 
@@ -46,20 +46,20 @@ namespace eventz.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("FirstName")
                         .HasMaxLength(128)
                         .HasColumnType("varchar(128)");
 
-                    b.Property<int>("Roles")
-                        .HasColumnType("int");
+                    b.Property<string>("LastName")
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
 
-                    b.Property<string>("Senha")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Sobrenome")
-                        .HasMaxLength(80)
-                        .HasColumnType("varchar(80)");
+                    b.Property<int>("Roles")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnUpdate()
