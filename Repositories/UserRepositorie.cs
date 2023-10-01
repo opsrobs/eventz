@@ -82,50 +82,8 @@ namespace eventz.Repositories
             return userId;
         }
 
-        public async Task<bool> AuthenticateAsync(string username, string password)
-        {
-            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+       
 
-            if (user == null) return false;
-
-            if (user.Password != password) return false;
-
-            return true;
-        }
-
-        public string GenerateToken(Guid id, string email)
-        {
-            var claims = new[]
-            {
-                new Claim("id",id.ToString()),
-                new Claim("email",email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
-
-
-            var privateKey = new SymmetricSecurityKey(Encoding.UTF8
-            .GetBytes(_configuration["jwt:SecretKey"]));
-
-            var credentials = new SigningCredentials
-                (privateKey, SecurityAlgorithms.HmacSha256);
-
-            var expiration = DateTime.UtcNow.AddHours(1);
-            JwtSecurityToken token = new JwtSecurityToken(
-                issuer: _configuration["jwt:issuer"],
-                audience: _configuration["jwt:audience"],
-                claims: claims,
-                expires: expiration,
-                signingCredentials: credentials);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-        public async Task<bool> UserExists(string username)
-        {
-            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
-            if (user == null) return false;
-
-            return true;
-        }
+      
     }
 }

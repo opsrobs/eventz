@@ -1,3 +1,5 @@
+using eventz.Accounts;
+using eventz.Accounts.Repositorie;
 using eventz.Controllers;
 using eventz.Data;
 using eventz.Mappings;
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<UserDbContext>(options => options.UseMySql(
 ));
 
 builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
+builder.Services.AddScoped<IAuthenticate, Authenticate>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
