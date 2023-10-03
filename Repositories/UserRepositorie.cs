@@ -12,19 +12,19 @@ namespace eventz.Repositories
 {
     public class UserRepositorie : IUserRepositorie
     {
-        private readonly UserDbContext _dbContext;
+        private readonly EventzDbContext _dbContext;
         private readonly IConfiguration _configuration;
-        public UserRepositorie(UserDbContext userDbContext, IConfiguration configuration) 
+        public UserRepositorie(EventzDbContext userDbContext, IConfiguration configuration) 
         {
             _dbContext = userDbContext;
             _configuration = configuration;
         }
 
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<UserModel>> GetAllUsers()
         {
             return await _dbContext.Users.ToListAsync();
         }
-        public async Task<bool> DataIsUnique(User user)
+        public async Task<bool> DataIsUnique(UserModel user)
         {
             if (!await _dbContext.Users.AnyAsync(x => x.CPF == user.CPF) || !await _dbContext.Users.AnyAsync(x => x.CNPJ == user.CNPJ))
             {
@@ -32,12 +32,12 @@ namespace eventz.Repositories
             }
             return false;
         }
-        public async Task<User> GetUserById(Guid id)
+        public async Task<UserModel> GetUserById(Guid id)
         {
             return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<User> Create(User user)
+        public async Task<UserModel> Create(UserModel user)
         {
             await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();
@@ -46,7 +46,7 @@ namespace eventz.Repositories
 
         public async Task<bool> Delete(Guid id)
         {
-            User userId = await GetUserById(id);
+            UserModel userId = await GetUserById(id);
 
             if (userId == null)
             {
@@ -61,9 +61,9 @@ namespace eventz.Repositories
         }
 
 
-        public async Task<User> Update(User user, Guid id)
+        public async Task<UserModel> Update(UserModel user, Guid id)
         {
-            User userId =  await GetUserById(id);
+            UserModel userId =  await GetUserById(id);
 
             if(userId == null) 
             {

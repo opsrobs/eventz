@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eventz.Data;
 
@@ -10,9 +11,10 @@ using eventz.Data;
 namespace eventz.Migrations
 {
     [DbContext(typeof(EventzDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231003000811_tablePerson")]
+    partial class tablePerson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

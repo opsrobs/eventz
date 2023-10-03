@@ -6,7 +6,7 @@ using System.Text;
 
 namespace eventz.Models
 {
-    public class User
+    public class UserModel
     {
         public Guid Id { get; set; }
         public string Username { get; set; }
@@ -21,13 +21,13 @@ namespace eventz.Models
         public DateTime? UpdatedAt { get; set; }
         public RolesEnum Roles { get; set; }
 
-        public User()
+        public UserModel()
         {
             Id = Guid.NewGuid();
             Roles = RolesEnum.User;
         }
 
-        public User(string username, string email, string password, string firstName, string lastName, DateTime dateOfBirth, string? cpf, string? cnpj, RolesEnum roles)
+        public UserModel(string username, string email, string password, string firstName, string lastName, DateTime dateOfBirth, string? cpf, string? cnpj, RolesEnum roles)
         {
             Id = Guid.NewGuid();
             Username = username;

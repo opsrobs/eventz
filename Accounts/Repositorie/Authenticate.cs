@@ -10,9 +10,9 @@ namespace eventz.Accounts.Repositorie
 {
     public class Authenticate : IAuthenticate
     {
-        private readonly UserDbContext _dbContext;
+        private readonly EventzDbContext _dbContext;
         private readonly IConfiguration _configuration;
-        public Authenticate(UserDbContext userDbContext, IConfiguration configuration)
+        public Authenticate(EventzDbContext userDbContext, IConfiguration configuration)
         {
             _dbContext = userDbContext;
             _configuration = configuration;

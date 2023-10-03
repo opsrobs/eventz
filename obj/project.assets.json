@@ -2711,19 +2711,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\robso\\.nuget\\packages\\": {}
+    "C:\\Users\\Premiersoft\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj",
+      "projectUniqueName": "C:\\Users\\Premiersoft\\OneDrive\\Documentos\\eventz\\eventz.csproj",
       "projectName": "eventz",
-      "projectPath": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\eventz.csproj",
-      "packagesPath": "C:\\Users\\robso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\robso\\OneDrive\\Área de Trabalho\\eventz\\obj\\",
+      "projectPath": "C:\\Users\\Premiersoft\\OneDrive\\Documentos\\eventz\\eventz.csproj",
+      "packagesPath": "C:\\Users\\Premiersoft\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Premiersoft\\OneDrive\\Documentos\\eventz\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\robso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Premiersoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2809,7 +2809,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

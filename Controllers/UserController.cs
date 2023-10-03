@@ -31,7 +31,7 @@ namespace eventz.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<ActionResult<UserDto>> Create([FromBody] User userModel)
+        public async Task<ActionResult<UserDto>> Create([FromBody] UserModel userModel)
         {
             if (await _repositorie.DataIsUnique(userModel))
             {
@@ -39,7 +39,7 @@ namespace eventz.Controllers
                 string encrypted = await _securityService.EncryptPassword(userModel.Password);
                 userModel.Password = encrypted;
 
-                User user = await _repositorie.Create(userModel);
+                UserModel user = await _repositorie.Create(userModel);
 
                 var userDto = _mapper.Map<UserDto>(user);
                 var token = _authenticate.GenerateToken(user.Id, user.Email);
@@ -55,7 +55,7 @@ namespace eventz.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public async Task<ActionResult<dynamic>> Authenticate([FromBody] User user)
+        public async Task<ActionResult<dynamic>> Authenticate([FromBody] UserModel user)
         {
             var userLoggin = await _authenticate.AuthenticateAsync(user.Username, user.Password);
             if (userLoggin == false )
@@ -68,12 +68,12 @@ namespace eventz.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> Update([FromBody] User userModel, Guid id)
+        public async Task<ActionResult<UserModel>> Update([FromBody] UserModel userModel, Guid id)
         {
             userModel.Id = id;  
             if (await _repositorie.DataIsUnique(userModel))
             {
-                User user = await _repositorie.Update(userModel, id);
+                UserModel user = await _repositorie.Update(userModel, id);
                 var userDto = _mapper.Map<UserDto>(user);
                 return Ok(userDto);
 
@@ -84,22 +84,22 @@ namespace eventz.Controllers
         }
 
         [HttpGet]
-        public async Task <ActionResult<List<User>>> GetAllUsers()
+        public async Task <ActionResult<List<UserModel>>> GetAllUsers()
         {
-            List<User> users = await _repositorie.GetAllUsers();
+            List<UserModel> users = await _repositorie.GetAllUsers();
             return Ok(users);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<User>>> GetUserById(Guid id)
+        public async Task<ActionResult<List<UserModel>>> GetUserById(Guid id)
         {
-            User user = await _repositorie.GetUserById(id);
+            UserModel user = await _repositorie.GetUserById(id);
             var userDto = _mapper.Map<UserDto>(user);
             return Ok(userDto);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<List<User>>> Delete(Guid id)
+        public async Task<ActionResult<List<UserModel>>> Delete(Guid id)
         {
             bool deleted = await _repositorie.Delete(id);
             return Ok(deleted);

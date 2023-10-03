@@ -17,12 +17,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionStringMysql = builder.Configuration.GetConnectionString("myConnectionString");
 
-builder.Services.AddDbContext<UserDbContext>(options => options.UseMySql(
+builder.Services.AddDbContext<EventzDbContext>(options => options.UseMySql(
     connectionStringMysql,
     new MySqlServerVersion(new Version(8, 1, 0))
 ));
 
 builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
+builder.Services.AddScoped<IPersonRepositorie, PersonRepositorie>();
 builder.Services.AddScoped<IAuthenticate, Authenticate>();
 builder.Services.AddScoped<ISecurityService, SecurityService>();
 builder.Services.AddAuthentication(options =>

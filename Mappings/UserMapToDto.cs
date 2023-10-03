@@ -8,7 +8,7 @@ namespace eventz.Mappings
     {
         public UserMapToDto() 
         {
-            CreateMap<User,UserDto>().ReverseMap();
+            CreateMap<UserModel,UserDto>().ReverseMap();
         }
     }
 }

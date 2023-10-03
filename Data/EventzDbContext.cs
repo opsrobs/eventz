@@ -4,19 +4,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eventz.Data
 {
-    public class UserDbContext : DbContext
+    public class EventzDbContext : DbContext
     {
-        public UserDbContext(DbContextOptions<UserDbContext> options)
+        public EventzDbContext(DbContextOptions<EventzDbContext> options)
             : base(options) 
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserModel> Users { get; set; }
+        public DbSet<PersonModel> Person { get; set; }
         //public DbSet
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new PersonMap());
             base.OnModelCreating(modelBuilder);
         }
     }

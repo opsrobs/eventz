@@ -10,7 +10,7 @@ using eventz.Data;
 
 namespace eventz.Migrations
 {
-    [DbContext(typeof(UserDbContext))]
+    [DbContext(typeof(EventzDbContext))]
     [Migration("20231001014256_initDb1")]
     partial class initDb1
     {
